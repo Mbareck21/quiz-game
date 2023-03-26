@@ -1,40 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Inter", sans-serif;
   color: #293264;
 }
 .App {
-  max-width: 60vw;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #456545;
-  margin: 20vh auto;
+  max-width: 500px;
   position: relative;
-  overflow: hidden;
-  min-height: 70vh;
-  padding: 2rem;
   background-color: #fff6f6;
+  margin: auto auto;
+  border: 1px solid #293264;
+  overflow: hidden;
+  padding: 1em;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+  border: none;
 }
 .blobTop {
   position: absolute;
-  overflow: hidden;
   right: -2%;
   top: -5%;
   height: 100px;
-  /* z-index: -1; */
 }
 .blobBottom {
   position: absolute;
-  overflow: hidden;
   left: -5%;
   bottom: -5%;
   height: 100px;
-  /* z-index: -1; */
 }
 .startButton {
   background-color: #4d5b9e;
+  z-index: 1;
   width: fit-content;
   padding: 1rem;
   height: 52px;
@@ -48,6 +49,8 @@ body {
   background: #4d5b9e;
   border-radius: 15px;
   border: none;
+  justify-self: center;
+  margin: auto;
 }
 .App h1 {
   font-family: "Karla";
@@ -60,31 +63,69 @@ body {
 }
 
 /* question Element Container */
-.questionElementContainer {
-  padding: 0;
-}
-.questionText {
-  font-family: "Karla";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  margin-bottom: 0;
-}
-.answersList {
+.elementList {
   list-style: none;
-  display: flex;
-  /* justify-content: space-around; */
-  /* grid-gap: 5px; */
   padding: 0;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
-.answersListItem {
-  border-radius: 8px;
+.elementListItem {
+  background-color: #dadfdb;
+  border-radius: 5px;
+  padding: 1em;
+}
+.elementAnswerList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  grid-gap: 0.5em;
+  list-style: inside;
+}
+.elementAnswerListItem {
+  background-color: white;
+  font-size: small;
   padding: 0.5em;
-  border: 1px solid red;
-  color: #4d5b9e;
-  font-size: smaller;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.elementAnswerListItemHeld {
+  background-color: green;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+.checkButton {
+  background-color: #4d5b9e;
+  /* z-index: 1; */
+  width: fit-content;
+  padding: 1rem;
+  height: 52px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: x-large;
+  line-height: 19px;
   text-align: center;
-  text-decoration: none;
-  margin-right: 5px;
+  color: #f5f7fb;
+  background: #4d5b9e;
+  border-radius: 15px;
+  border: none;
+  margin: auto;
+}
+
+@media (max-width: 500px) {
+  .elementAnswerList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 5px;
+  }
 }
