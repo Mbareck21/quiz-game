@@ -1,5 +1,5 @@
 import React from "react";
-function QuizQuestion({ data, onHold, selectedAnswer }) {
+function QuizQuestion({ data, onHold,  }) {
   return (
     <div className="questionElementContainer">
       <ul className="elementList">
@@ -12,7 +12,7 @@ function QuizQuestion({ data, onHold, selectedAnswer }) {
                   key={index}
                   onClick={() => onHold(element.id, index)}
                   className={
-                    element.isHeld && selectedAnswer === index
+                    element.isHeld && element.selectedAnswerIndex === index
                       ? "elementAnswerListItemHeld"
                       : "elementAnswerListItem"
                   }

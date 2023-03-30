@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import blobOne from "./Images/blob1.png";
-import blobTwo from "./Images/blob2.png";
+
 import QuizQuestion from "./QuizQuestion";
 import { nanoid } from "nanoid";
 
@@ -10,9 +9,9 @@ const APIurl =
 function App() {
   const [start, setStart] = useState(false);
   const [data, setData] = useState([]);
-  const [selectedAnswer, setSelectedAnswer] = useState(false);
 
   useEffect(() => {
+    if (!start) return;
     const storedData = JSON.parse(localStorage.getItem("data"));
     if (storedData) {
       setData(storedData);
@@ -34,42 +33,49 @@ function App() {
           localStorage.setItem("data", JSON.stringify(response));
         });
     }
-  }, []);
+  }, [start]);
 
   console.log("dataElements", data);
   const holdAnswer = (id, index) => {
     const updatedData = data.map((element) => {
-      return element.id === id
-        ? { ...element, isHeld: !element.isHeld }
-        : element;
+      if (element.id === id) {
+        return {
+          ...element,
+          isHeld: !element.isHeld,
+          selectedAnswerIndex: index,
+        };
+      } else {
+        return element;
+      }
     });
-    setSelectedAnswer(index);
     setData(updatedData);
     localStorage.setItem("data", JSON.stringify(updatedData));
   };
+
   console.log("updatedData", data);
   return (
     <main className="App">
-      <img className="blobTop" src={blobOne} alt="" />
 
       {start ? (
-        <QuizQuestion
-          data={data}
-          onHold={holdAnswer}
-          selectedAnswer={selectedAnswer}
-        />
+        <QuizQuestion data={data} onHold={holdAnswer} />
       ) : (
         <>
           <h1>Quizzical!</h1>
 
-          <p className="gameDescription">description</p>
+          <p className="gameDescription">
+            Welcome to Quizzical! Put your knowledge to the test with our
+            exciting and challenging quiz game. Dive into a world of trivia
+            spanning various categories, and see how much you really know. Are
+            you ready to take on the challenge? Start the game now and prove
+            your mettle!
+          </p>
+
           <button onClick={() => setStart(true)} className="startButton">
             Start quiz
           </button>
         </>
       )}
 
-      <img className="blobBottom" src={blobTwo} alt="" />
     </main>
   );
 }
