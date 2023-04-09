@@ -1,38 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  background-color: #1e1e1e;
+}
+
 .App {
+  max-width: 500px;
+  position: relative;
+  background-color: #2f2f2f;
+  margin: 2em auto;
+  padding: 1.5em;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+}
+
+.blobTop,
+.blobBottom {
+  width: 100px;
+  opacity: 0.1;
+}
+
+.blobTop {
+  position: absolute;
+  right: -2%;
+  top: -5%;
+}
+
+.blobBottom {
+  position: absolute;
+  left: -5%;
+  bottom: -5%;
+}
+
+.startButton,
+.checkButton {
+  background-color: #4d5b9e;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f5f7fb;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.startButton:hover,
+.checkButton:hover {
+  background-color: #6872c2;
+}
+.gameDescription {
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: justify;
+  padding: 0 1em;
+  margin-bottom: 1.5em;
+  color: #ccc;
+}
+
+.App h1 {
+  font-weight: 700;
+  font-size: 31.25px;
+  line-height: 37px;
   text-align: center;
+  color: #4d5b9e;
+  margin-bottom: 1em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* question Element Container */
+.elementList {
+  list-style: none;
+  padding: 0;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.elementListItem {
+  background-color: #3a3a3a;
+  border-radius: 5px;
+  padding: 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.elementQuestion {
+  margin-bottom: 0.5em;
 }
 
-.App-link {
-  color: #61dafb;
+.elementAnswerList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  grid-gap: 0.5em;
+  list-style: inside;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.elementAnswerListItem {
+  background-color: #4a4a4a;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.elementAnswerListItem:hover {
+  background-color: #5a5a5a;
+}
+
+.elementAnswerListItemHeld {
+  background-color: #4d5b9e;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+}
+.correct {
+  background-color: #19b38a;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.incorrect {
+  background-color: #ed9090;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkButton,
+.startButton {
+  margin: 1em auto;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .elementAnswerList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 5px;
   }
 }
