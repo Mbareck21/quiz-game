@@ -1,5 +1,14 @@
 import React from "react";
-function QuizQuestion({ data, onHold, oncheckAnswers, onshowAnswers }) {
+
+function CheckedAnswers({ data, onresetGame }) {
+  const allCorrectAnswers = [];
+  data.map((element) => {
+    const correctAnswer = element.correct_answer;
+    const selectedAnswer = element.answers[element.selectedAnswerIndex];
+    if (selectedAnswer === correctAnswer) {
+      allCorrectAnswers.push(correctAnswer);
+    }
+  });
   return (
     <div className="questionElementContainer">
       <ul className="elementList">
@@ -10,10 +19,11 @@ function QuizQuestion({ data, onHold, oncheckAnswers, onshowAnswers }) {
               {element.answers.map((answer, index) => (
                 <li
                   key={index}
-                  onClick={() => onHold(element.id, index)}
                   className={
-                    element.isHeld && element.selectedAnswerIndex === index
-                      ? "elementAnswerListItemHeld"
+                    answer === element.correct_answer
+                      ? "correct"
+                      : element.selectedAnswerIndex === index
+                      ? "incorrect"
                       : "elementAnswerListItem"
                   }
                 >
@@ -24,11 +34,12 @@ function QuizQuestion({ data, onHold, oncheckAnswers, onshowAnswers }) {
           </li>
         ))}
       </ul>
-      <button className="checkButton" onClick={oncheckAnswers}>
-        Check Answers
+      <p>Your score is {allCorrectAnswers.length} /5 </p>
+      <button className="startButton" onClick={onresetGame}>
+        Play Again
       </button>
     </div>
   );
 }
 
-export default QuizQuestion;
+export default CheckedAnswers;

@@ -71,75 +71,96 @@ body {
 .App h1 {
   font-weight: 700;
   font-size: 31.25px;
-line-height: 37px;
-text-align: center;
-color: #4d5b9e;
-margin-bottom: 1em;
+  line-height: 37px;
+  text-align: center;
+  color: #4d5b9e;
+  margin-bottom: 1em;
 }
 
 /* question Element Container */
 .elementList {
-list-style: none;
-padding: 0;
-border-radius: 5px;
-display: grid;
-grid-template-columns: 1fr;
-grid-gap: 5px;
+  list-style: none;
+  padding: 0;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
 
 .elementListItem {
-background-color: #3a3a3a;
-border-radius: 5px;
-padding: 1em;
+  background-color: #3a3a3a;
+  border-radius: 5px;
+  padding: 1em;
 }
 
 .elementQuestion {
-margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .elementAnswerList {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-gap: 5px;
-grid-gap: 0.5em;
-list-style: inside;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  grid-gap: 0.5em;
+  list-style: inside;
 }
 
 .elementAnswerListItem {
-background-color: #4a4a4a;
-font-size: small;
-padding: 0.5em;
-border-radius: 5px;
-width: fit-content;
-height: fit-content;
-cursor: pointer;
-transition: background-color 0.3s;
+  background-color: #4a4a4a;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .elementAnswerListItem:hover {
-background-color: #5a5a5a;
+  background-color: #5a5a5a;
 }
 
 .elementAnswerListItemHeld {
-background-color: #4d5b9e;
-font-size: small;
-padding: 0.5em;
-border-radius: 5px;
-width: fit-content;
-height: fit-content;
-cursor: pointer;
+  background-color: #4d5b9e;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+}
+.correct {
+  background-color: #19b38a;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.incorrect {
+  background-color: #ed9090;
+  font-size: small;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.checkButton {
-margin: 1em auto;
-display: block;
+.checkButton,
+.startButton {
+  margin: 1em auto;
+  display: block;
 }
 
 @media (max-width: 500px) {
-.elementAnswerList {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-template-rows: repeat(2, auto);
-grid-gap: 5px;
-}
+  .elementAnswerList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 5px;
+  }
 }
